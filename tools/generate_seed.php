@@ -19,11 +19,11 @@ $out[] = "--  SIAKAD - data contoh (fiktif). Dibuat oleh tools/generate_seed.php
 $out[] = "--  Akun demo: admin / admin123, dosen (NIDN) / dosen123, mahasiswa (NPM) / mhs123";
 $out[] = "-- =====================================================================";
 $out[] = "USE db_siakad;";
-$out[] = "SET FOREIGN_KEY_CHECKS = 0;";
+// Kosongkan tabel dari anak ke induk. DELETE dipakai (bukan TRUNCATE) karena
+// MariaDB/MySQL menolak TRUNCATE pada tabel yang dirujuk foreign key (#1701).
 foreach (['nilai', 'krs', 'kelas', 'skala_nilai', 'ruangan', 'tahun_akademik', 'mata_kuliah', 'mahasiswa', 'dosen', 'users', 'program_studi', 'fakultas'] as $t) {
-    $out[] = "TRUNCATE TABLE $t;";
+    $out[] = "DELETE FROM $t;";
 }
-$out[] = "SET FOREIGN_KEY_CHECKS = 1;";
 $out[] = "";
 
 // ---------------------------------------------------------------- fakultas

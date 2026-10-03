@@ -3,20 +3,18 @@
 --  Akun demo: admin / admin123, dosen (NIDN) / dosen123, mahasiswa (NPM) / mhs123
 -- =====================================================================
 USE db_siakad;
-SET FOREIGN_KEY_CHECKS = 0;
-TRUNCATE TABLE nilai;
-TRUNCATE TABLE krs;
-TRUNCATE TABLE kelas;
-TRUNCATE TABLE skala_nilai;
-TRUNCATE TABLE ruangan;
-TRUNCATE TABLE tahun_akademik;
-TRUNCATE TABLE mata_kuliah;
-TRUNCATE TABLE mahasiswa;
-TRUNCATE TABLE dosen;
-TRUNCATE TABLE users;
-TRUNCATE TABLE program_studi;
-TRUNCATE TABLE fakultas;
-SET FOREIGN_KEY_CHECKS = 1;
+DELETE FROM nilai;
+DELETE FROM krs;
+DELETE FROM kelas;
+DELETE FROM skala_nilai;
+DELETE FROM ruangan;
+DELETE FROM tahun_akademik;
+DELETE FROM mata_kuliah;
+DELETE FROM mahasiswa;
+DELETE FROM dosen;
+DELETE FROM users;
+DELETE FROM program_studi;
+DELETE FROM fakultas;
 
 INSERT INTO fakultas (id_fakultas, kode_fakultas, nama_fakultas) VALUES
 ('1', 'FMIPA', 'Fakultas Matematika dan Ilmu Pengetahuan Alam'),
@@ -30,42 +28,42 @@ INSERT INTO program_studi (id_prodi, kode_prodi, nama_prodi, jenjang, id_fakulta
 ('5', 'TSP', 'Teknik Sipil', 'S1', '2');
 
 INSERT INTO users (id_user, username, password_hash, role, is_aktif) VALUES
-('1', 'admin', '$2y$10$F4M17NBVVunkAJk7n5znxuiyc1BZ86Nm8ZuRqjO8CvYcwc2Ey7wtq', 'admin', '1'),
-('2', '0010018101', '$2y$10$w0V.Wj1rNgfyaVkfTuIHtueVhIMaIlrhfaGXFejtZ6QLIIeBiRifu', 'dosen', '1'),
-('3', '0011028108', '$2y$10$w0V.Wj1rNgfyaVkfTuIHtueVhIMaIlrhfaGXFejtZ6QLIIeBiRifu', 'dosen', '1'),
-('4', '0012038115', '$2y$10$w0V.Wj1rNgfyaVkfTuIHtueVhIMaIlrhfaGXFejtZ6QLIIeBiRifu', 'dosen', '1'),
-('5', '0013048122', '$2y$10$w0V.Wj1rNgfyaVkfTuIHtueVhIMaIlrhfaGXFejtZ6QLIIeBiRifu', 'dosen', '1'),
-('6', '0014058129', '$2y$10$w0V.Wj1rNgfyaVkfTuIHtueVhIMaIlrhfaGXFejtZ6QLIIeBiRifu', 'dosen', '1'),
-('7', '0015068136', '$2y$10$w0V.Wj1rNgfyaVkfTuIHtueVhIMaIlrhfaGXFejtZ6QLIIeBiRifu', 'dosen', '1'),
-('8', '0016078143', '$2y$10$w0V.Wj1rNgfyaVkfTuIHtueVhIMaIlrhfaGXFejtZ6QLIIeBiRifu', 'dosen', '1'),
-('9', '2508107010001', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('10', '2508107010002', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('11', '2508107010003', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('12', '2508107010004', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('13', '2508107010005', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('14', '2508107010006', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('15', '2508107010007', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('16', '2508107010008', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('17', '2508107010009', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('18', '2508107010010', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('19', '2508107010011', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('20', '2508107010012', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('21', '2508107010013', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('22', '2508107010014', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('23', '2508107010015', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('24', '2508107010016', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('25', '2508108010001', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('26', '2508108010002', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('27', '2508108010003', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('28', '2508108010004', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('29', '2508108010005', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('30', '2508108010006', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('31', '2608107010001', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('32', '2608107010002', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('33', '2608107010003', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('34', '2608107010004', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('35', '2608107010005', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1'),
-('36', '2608107010006', '$2y$10$RFS4HS2dwD2v6qIgTtgfVOMLonUID/X24CTq0iBQco8kdQ4rk1piC', 'mahasiswa', '1');
+('1', 'admin', '$2y$10$lq8dI5RHMKrod10bTKBwl.PltOdjIKWlr.vXgDDQ5uYmo.LssZqYe', 'admin', '1'),
+('2', '0010018101', '$2y$10$9U7ZRYiiwoxsgK2XseND4.I.AJ6LWbHhfC.HanwUIQmAmGbLqESQW', 'dosen', '1'),
+('3', '0011028108', '$2y$10$9U7ZRYiiwoxsgK2XseND4.I.AJ6LWbHhfC.HanwUIQmAmGbLqESQW', 'dosen', '1'),
+('4', '0012038115', '$2y$10$9U7ZRYiiwoxsgK2XseND4.I.AJ6LWbHhfC.HanwUIQmAmGbLqESQW', 'dosen', '1'),
+('5', '0013048122', '$2y$10$9U7ZRYiiwoxsgK2XseND4.I.AJ6LWbHhfC.HanwUIQmAmGbLqESQW', 'dosen', '1'),
+('6', '0014058129', '$2y$10$9U7ZRYiiwoxsgK2XseND4.I.AJ6LWbHhfC.HanwUIQmAmGbLqESQW', 'dosen', '1'),
+('7', '0015068136', '$2y$10$9U7ZRYiiwoxsgK2XseND4.I.AJ6LWbHhfC.HanwUIQmAmGbLqESQW', 'dosen', '1'),
+('8', '0016078143', '$2y$10$9U7ZRYiiwoxsgK2XseND4.I.AJ6LWbHhfC.HanwUIQmAmGbLqESQW', 'dosen', '1'),
+('9', '2508107010001', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('10', '2508107010002', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('11', '2508107010003', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('12', '2508107010004', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('13', '2508107010005', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('14', '2508107010006', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('15', '2508107010007', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('16', '2508107010008', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('17', '2508107010009', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('18', '2508107010010', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('19', '2508107010011', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('20', '2508107010012', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('21', '2508107010013', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('22', '2508107010014', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('23', '2508107010015', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('24', '2508107010016', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('25', '2508108010001', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('26', '2508108010002', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('27', '2508108010003', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('28', '2508108010004', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('29', '2508108010005', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('30', '2508108010006', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('31', '2608107010001', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('32', '2608107010002', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('33', '2608107010003', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('34', '2608107010004', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('35', '2608107010005', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1'),
+('36', '2608107010006', '$2y$10$vCIQnv57x6Vp459Iyq9Gsu83YV6a4oEsyOK592ZIJmRg.71hzana6', 'mahasiswa', '1');
 
 INSERT INTO dosen (id_dosen, nidn, nama_dosen, email, no_hp, id_prodi, id_user) VALUES
 ('1', '0010018101', 'Dr. Rahmat Hidayat, S.Kom., M.Kom.', 'rahmat.hidayat@dosen.siakad.test', '085252082305', '1', '2'),

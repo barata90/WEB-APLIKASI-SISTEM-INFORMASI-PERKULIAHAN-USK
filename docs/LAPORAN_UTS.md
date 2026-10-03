@@ -720,6 +720,7 @@ Kendala berikut benar-benar ditemui selama pembangunan aplikasi di server uji.
 | 5 | Folder `config/` dan berkas `.sql` berpotensi dapat diunduh lewat browser | Seluruh folder proyek berada di bawah *document root* | Menambahkan `.htaccess` (aturan `RewriteRule ... [F]` dan `Require all denied`) serta `AllowOverride All`; diverifikasi dengan `curl` menghasilkan 403 |
 | 6 | IPK berpotensi salah jika mahasiswa mengulang mata kuliah (SKS terhitung dua kali) | View IPK awal menjumlahkan semua nilai | View `v_ipk` diubah agar memilih bobot terbaik per mata kuliah; diuji dengan transaksi yang di-ROLLBACK (IPK 2,91 menjadi 3,06 dengan total SKS tetap 27) |
 | 7 | Validasi sisi server sulit diperagakan karena browser lebih dulu menolak input | Atribut HTML5 `required`, `maxlength`, `type=email` | Validasi dibuat berlapis (HTML5, PHP, dan `CHECK` di basis data); untuk dokumentasi, validasi HTML5 dimatikan sementara oleh skrip uji agar validasi server terlihat |
+| 8 | Impor `seed.sql` lewat phpMyAdmin XAMPP berhenti dengan galat `#1701 Cannot truncate a table referenced in a foreign key constraint` | Opsi *Enable foreign key checks* phpMyAdmin tetap mengaktifkan pemeriksaan foreign key, sedangkan `TRUNCATE` tidak diizinkan pada tabel induk yang dirujuk tabel lain | `TRUNCATE` diganti `DELETE FROM` dengan urutan dari tabel anak ke tabel induk; diuji ulang dengan pemeriksaan foreign key aktif, baik pada basis data baru maupun saat impor ulang |
 
 ---
 
