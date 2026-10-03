@@ -1,0 +1,15 @@
+$ curl -sI http://localhost/siakad/ | head -8
+HTTP/1.1 200 OK
+Date: Sat, 03 Oct 2026 03:29:41 GMT
+Server: Apache/2.4.58 (Ubuntu)
+Set-Cookie: SIAKADSESSID=pvcsl1mutlnd3cn8be02pls5qu; path=/; HttpOnly; SameSite=Lax
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Content-Type: text/html; charset=UTF-8
+
+$ curl -s -o /dev/null -w 'GET /siakad/config/config.php -> HTTP %{http_code}\n' http://localhost/siakad/config/config.php
+GET /siakad/config/config.php -> HTTP 403
+
+$ curl -s -o /dev/null -w 'GET /siakad/database/schema.sql -> HTTP %{http_code}\n' http://localhost/siakad/database/schema.sql
+GET /siakad/database/schema.sql -> HTTP 403

@@ -1,0 +1,19 @@
+$ mariadb -t db_siakad -e "SELECT p.nama_prodi, COUNT(m.id_mahasiswa) AS jumlah_mhs, ROUND(AVG(i.ipk),2) AS rata_ipk FROM program_studi p LEFT JOIN mahasiswa m ON m.id_prodi = p.id_prodi LEFT JOIN v_ipk i ON i.id_mahasiswa = m.id_mahasiswa GROUP BY p.id_prodi HAVING jumlah_mhs > 0"
++-------------+------------+----------+
+| nama_prodi  | jumlah_mhs | rata_ipk |
++-------------+------------+----------+
+| Informatika |         23 |     3.25 |
+| Statistika  |          6 |     3.16 |
++-------------+------------+----------+
+
+$ mariadb -t db_siakad -e "SELECT mk.nama_mk, d.nama_dosen, COUNT(k.id_krs) AS peserta FROM kelas kl JOIN mata_kuliah mk ON mk.id_mk = kl.id_mk JOIN dosen d ON d.id_dosen = kl.id_dosen LEFT JOIN krs k ON k.id_kelas = kl.id_kelas WHERE kl.id_ta = 3 GROUP BY kl.id_kelas ORDER BY peserta DESC LIMIT 6"
++------------------------------+------------------------------------+---------+
+| nama_mk                      | nama_dosen                         | peserta |
++------------------------------+------------------------------------+---------+
+| Jaringan Komputer            | Dr. Rahmat Hidayat, S.Kom., M.Kom. |      16 |
+| Rekayasa Perangkat Lunak     | Dr. Zulfikar Amin, M.Kom.          |      16 |
+| Manajemen dan Pemodelan Data | Nurul Fadhilah, S.Si., M.Sc.       |      16 |
+| Pemrograman Web              | Dr. Zulfikar Amin, M.Kom.          |      16 |
+| Sistem Operasi               | Ir. Teuku Iskandar, M.T.           |      16 |
+| Basis Data untuk Statistika  | Nurul Fadhilah, S.Si., M.Sc.       |       6 |
++------------------------------+------------------------------------+---------+

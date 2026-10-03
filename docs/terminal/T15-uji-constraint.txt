@@ -1,0 +1,27 @@
+$ mariadb -t db_siakad -e "INSERT INTO mata_kuliah (kode_mk, nama_mk, sks, semester_paket, id_prodi) VALUES ('INF301','Duplikat',3,3,1)"
+--------------
+INSERT INTO mata_kuliah (kode_mk, nama_mk, sks, semester_paket, id_prodi) VALUES ('INF301','Duplikat',3,3,1)
+--------------
+
+ERROR 1062 (23000) at line 1: Duplicate entry 'INF301' for key 'uq_mk_kode'
+
+$ mariadb -t db_siakad -e "DELETE FROM mata_kuliah WHERE kode_mk = 'INF301'"
+--------------
+DELETE FROM mata_kuliah WHERE kode_mk = 'INF301'
+--------------
+
+ERROR 1451 (23000) at line 1: Cannot delete or update a parent row: a foreign key constraint fails (`db_siakad`.`kelas`, CONSTRAINT `fk_kelas_mk` FOREIGN KEY (`id_mk`) REFERENCES `mata_kuliah` (`id_mk`) ON UPDATE CASCADE)
+
+$ mariadb -t db_siakad -e "INSERT INTO mata_kuliah (kode_mk, nama_mk, sks, semester_paket, id_prodi) VALUES ('INF398','SKS Salah',9,3,1)"
+--------------
+INSERT INTO mata_kuliah (kode_mk, nama_mk, sks, semester_paket, id_prodi) VALUES ('INF398','SKS Salah',9,3,1)
+--------------
+
+ERROR 4025 (23000) at line 1: CONSTRAINT `chk_mk_sks` failed for `db_siakad`.`mata_kuliah`
+
+$ mariadb -t db_siakad -e "INSERT INTO krs (id_mahasiswa, id_kelas) VALUES (999, 1)"
+--------------
+INSERT INTO krs (id_mahasiswa, id_kelas) VALUES (999, 1)
+--------------
+
+ERROR 1452 (23000) at line 1: Cannot add or update a child row: a foreign key constraint fails (`db_siakad`.`krs`, CONSTRAINT `fk_krs_mhs` FOREIGN KEY (`id_mahasiswa`) REFERENCES `mahasiswa` (`id_mahasiswa`) ON UPDATE CASCADE)

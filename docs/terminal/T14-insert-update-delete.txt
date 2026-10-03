@@ -1,0 +1,16 @@
+$ mariadb -t db_siakad -e "START TRANSACTION; INSERT INTO mata_kuliah (kode_mk, nama_mk, sks, semester_paket, jenis, id_prodi) VALUES ('INF399','Topik Khusus Basis Data',2,6,'Pilihan',1); SELECT id_mk, kode_mk, nama_mk, sks FROM mata_kuliah WHERE kode_mk='INF399'; UPDATE mata_kuliah SET sks = 3 WHERE kode_mk = 'INF399'; SELECT kode_mk, sks, ROW_COUNT() AS baris_diubah FROM mata_kuliah WHERE kode_mk='INF399'; DELETE FROM mata_kuliah WHERE kode_mk = 'INF399'; SELECT COUNT(*) AS sisa FROM mata_kuliah WHERE kode_mk='INF399'; ROLLBACK;"
++-------+---------+-------------------------+-----+
+| id_mk | kode_mk | nama_mk                 | sks |
++-------+---------+-------------------------+-----+
+|    28 | INF399  | Topik Khusus Basis Data |   2 |
++-------+---------+-------------------------+-----+
++---------+-----+--------------+
+| kode_mk | sks | baris_diubah |
++---------+-----+--------------+
+| INF399  |   3 |            1 |
++---------+-----+--------------+
++------+
+| sisa |
++------+
+|    0 |
++------+

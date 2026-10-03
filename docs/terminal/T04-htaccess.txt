@@ -1,0 +1,13 @@
+$ cat .htaccess
+# Konfigurasi Apache untuk SIAKAD
+Options -Indexes
+DirectoryIndex index.php
+
+# Blokir akses langsung ke folder kode, konfigurasi, dan file SQL
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(app|config|database|tools|docs)(/|$) - [F,L]
+</IfModule>
+<FilesMatch "\.(sql|md|log|ini)$">
+    Require all denied
+</FilesMatch>

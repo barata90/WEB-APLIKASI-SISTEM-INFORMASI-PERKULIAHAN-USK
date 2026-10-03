@@ -1,0 +1,20 @@
+$ mariadb -t db_siakad -e "SELECT TABLE_NAME AS objek, TABLE_TYPE AS jenis, ENGINE FROM information_schema.TABLES WHERE TABLE_SCHEMA='db_siakad' ORDER BY TABLE_TYPE, TABLE_NAME"
++----------------+------------+--------+
+| objek          | jenis      | ENGINE |
++----------------+------------+--------+
+| dosen          | BASE TABLE | InnoDB |
+| fakultas       | BASE TABLE | InnoDB |
+| kelas          | BASE TABLE | InnoDB |
+| krs            | BASE TABLE | InnoDB |
+| mahasiswa      | BASE TABLE | InnoDB |
+| mata_kuliah    | BASE TABLE | InnoDB |
+| nilai          | BASE TABLE | InnoDB |
+| program_studi  | BASE TABLE | InnoDB |
+| ruangan        | BASE TABLE | InnoDB |
+| skala_nilai    | BASE TABLE | InnoDB |
+| tahun_akademik | BASE TABLE | InnoDB |
+| users          | BASE TABLE | InnoDB |
+| v_ipk          | VIEW       | NULL   |
+| v_ips          | VIEW       | NULL   |
+| v_nilai_akhir  | VIEW       | NULL   |
++----------------+------------+--------+

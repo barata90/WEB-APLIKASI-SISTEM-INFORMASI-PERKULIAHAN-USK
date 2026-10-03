@@ -1,0 +1,17 @@
+$ lscpu | grep -E 'Architecture|Model name|^CPU\(s\)|Thread|Core|Socket|L3'
+Architecture:                            x86_64
+CPU(s):                                  4
+Model name:                              Intel(R) Xeon(R) Processor @ 2.80GHz
+Thread(s) per core:                      1
+Core(s) per socket:                      4
+Socket(s):                               1
+L3 cache:                                33 MiB (1 instance)
+
+$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       661Mi        14Gi        17Mi       614Mi        15Gi
+Swap:             0B          0B          0B
+
+$ df -h /
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda        252G  9.0G   30G  24% /
