@@ -1,0 +1,23 @@
+$ mariadb -t db_siakad -e "SELECT mk.kode_mk, mk.nama_mk, mk.sks, v.nilai_tugas AS tugas, v.nilai_uts AS uts, v.nilai_uas AS uas, v.nilai_akhir, v.huruf, v.bobot FROM krs k JOIN kelas kl ON kl.id_kelas = k.id_kelas JOIN mata_kuliah mk ON mk.id_mk = kl.id_mk LEFT JOIN v_nilai_akhir v ON v.id_krs = k.id_krs WHERE k.id_mahasiswa = 1 AND kl.id_ta = 2 ORDER BY mk.kode_mk"
++---------+--------------------------------+-----+-------+-------+-------+-------------+-------+-------+
+| kode_mk | nama_mk                        | sks | tugas | uts   | uas   | nilai_akhir | huruf | bobot |
++---------+--------------------------------+-----+-------+-------+-------+-------------+-------+-------+
+| INF201  | Struktur Data                  |   3 | 78.00 | 67.00 | 61.00 |       67.90 | BC    |  2.50 |
+| INF202  | Matematika Diskrit             |   3 | 76.00 | 69.00 | 74.00 |       73.10 | B     |  3.00 |
+| INF203  | Basis Data                     |   3 | 67.00 | 63.00 | 76.00 |       69.40 | B     |  3.00 |
+| INF204  | Pemrograman Berorientasi Objek |   3 | 68.00 | 80.00 | 71.00 |       72.80 | B     |  3.00 |
++---------+--------------------------------+-----+-------+-------+-------+-------------+-------+-------+
+
+$ mariadb -t db_siakad -e "SELECT * FROM v_ips WHERE id_mahasiswa = 1; SELECT * FROM v_ipk WHERE id_mahasiswa = 1"
++--------------+-------+-----------+------+
+| id_mahasiswa | id_ta | total_sks | ips  |
++--------------+-------+-----------+------+
+|            1 |     1 |        12 | 2.79 |
+|            1 |     2 |        12 | 2.88 |
+|            1 |     3 |         3 | 3.50 |
++--------------+-------+-----------+------+
++--------------+-----------+------+
+| id_mahasiswa | total_sks | ipk  |
++--------------+-----------+------+
+|            1 |        27 | 2.91 |
++--------------+-----------+------+

@@ -1,0 +1,11 @@
+$ service apache2 status
+ * apache2 is running
+
+$ service mariadb status | grep -E 'Uptime|Threads|Server version'
+Server version		10.11.14-MariaDB-0ubuntu0.24.04.1
+Uptime:			24 min 21 sec
+Threads: 1  Questions: 4546  Slow queries: 0  Opens: 268  Open tables: 47  Queries per second avg: 3.111
+
+$ ss -tlnp | grep -E ':80 |:3306 ' | awk '{split($6, a, "\""); print $1, $4, a[2]}'
+LISTEN 127.0.0.1:3306 mariadbd
+LISTEN 0.0.0.0:80 apache2

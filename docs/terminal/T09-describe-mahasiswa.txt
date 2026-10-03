@@ -1,0 +1,16 @@
+$ mariadb -t db_siakad -e 'DESCRIBE mahasiswa'
++----------------+------------------+------+-----+---------------------+----------------+
+| Field          | Type             | Null | Key | Default             | Extra          |
++----------------+------------------+------+-----+---------------------+----------------+
+| id_mahasiswa   | int(10) unsigned | NO   | PRI | NULL                | auto_increment |
+| npm            | char(13)         | NO   | UNI | NULL                |                |
+| nama_mahasiswa | varchar(100)     | NO   |     | NULL                |                |
+| jenis_kelamin  | enum('L','P')    | NO   |     | NULL                |                |
+| tanggal_lahir  | date             | YES  |     | NULL                |                |
+| email          | varchar(100)     | YES  | UNI | NULL                |                |
+| angkatan       | year(4)          | NO   |     | NULL                |                |
+| id_prodi       | int(10) unsigned | NO   | MUL | NULL                |                |
+| id_dosen_wali  | int(10) unsigned | YES  | MUL | NULL                |                |
+| id_user        | int(10) unsigned | YES  | UNI | NULL                |                |
+| created_at     | timestamp        | NO   |     | current_timestamp() |                |
++----------------+------------------+------+-----+---------------------+----------------+

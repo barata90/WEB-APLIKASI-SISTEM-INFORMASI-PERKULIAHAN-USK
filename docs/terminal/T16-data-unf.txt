@@ -1,0 +1,13 @@
+$ mariadb -t db_siakad -e "SELECT m.npm, m.nama_mahasiswa AS nama, p.nama_prodi AS prodi, f.kode_fakultas AS fak, mk.kode_mk, mk.nama_mk, mk.sks, d.nama_dosen AS pengampu, v.nilai_akhir AS na, v.huruf FROM krs k JOIN mahasiswa m ON m.id_mahasiswa=k.id_mahasiswa JOIN program_studi p ON p.id_prodi=m.id_prodi JOIN fakultas f ON f.id_fakultas=p.id_fakultas JOIN kelas kl ON kl.id_kelas=k.id_kelas JOIN mata_kuliah mk ON mk.id_mk=kl.id_mk JOIN dosen d ON d.id_dosen=kl.id_dosen JOIN v_nilai_akhir v ON v.id_krs=k.id_krs WHERE kl.id_ta=1 AND m.id_mahasiswa IN (1,2) ORDER BY m.npm, mk.kode_mk"
++---------------+---------------+-------------+-------+---------+-------------------------------+-----+------------------------------------+-------+-------+
+| npm           | nama          | prodi       | fak   | kode_mk | nama_mk                       | sks | pengampu                           | na    | huruf |
++---------------+---------------+-------------+-------+---------+-------------------------------+-----+------------------------------------+-------+-------+
+| 2508107010001 | Rahmi Azzahra | Informatika | FMIPA | INF101  | Algoritma dan Pemrograman     |   4 | Dr. Rahmat Hidayat, S.Kom., M.Kom. | 72.40 | B     |
+| 2508107010001 | Rahmi Azzahra | Informatika | FMIPA | INF102  | Kalkulus I                    |   3 | Ir. Teuku Iskandar, M.T.           | 68.30 | BC    |
+| 2508107010001 | Rahmi Azzahra | Informatika | FMIPA | INF103  | Pengantar Teknologi Informasi |   2 | Dr. Zulfikar Amin, M.Kom.          | 66.40 | BC    |
+| 2508107010001 | Rahmi Azzahra | Informatika | FMIPA | INF104  | Logika Informatika            |   3 | Nurul Fadhilah, S.Si., M.Sc.       | 75.30 | B     |
+| 2508107010002 | Nadia Rahman  | Informatika | FMIPA | INF101  | Algoritma dan Pemrograman     |   4 | Dr. Rahmat Hidayat, S.Kom., M.Kom. | 81.30 | AB    |
+| 2508107010002 | Nadia Rahman  | Informatika | FMIPA | INF102  | Kalkulus I                    |   3 | Ir. Teuku Iskandar, M.T.           | 78.90 | AB    |
+| 2508107010002 | Nadia Rahman  | Informatika | FMIPA | INF103  | Pengantar Teknologi Informasi |   2 | Dr. Zulfikar Amin, M.Kom.          | 78.20 | AB    |
+| 2508107010002 | Nadia Rahman  | Informatika | FMIPA | INF104  | Logika Informatika            |   3 | Nurul Fadhilah, S.Si., M.Sc.       | 74.10 | B     |
++---------------+---------------+-------------+-------+---------+-------------------------------+-----+------------------------------------+-------+-------+

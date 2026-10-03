@@ -1,0 +1,133 @@
+digraph ERD {
+  graph [rankdir=LR, fontname="Inter", splines=true, nodesep=0.5, ranksep=1.1, pad=0.3, bgcolor="white", newrank=true];
+  node  [shape=plain, fontname="Inter", fontsize=12];
+  edge  [fontname="Inter", fontsize=11, color="#475569", penwidth=1.2, dir=both, arrowtail=none];
+
+  fakultas [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="5" color="#1e3a8a">
+    <tr><td bgcolor="#1e3a8a"><font color="white"><b>fakultas</b></font></td></tr>
+    <tr><td align="left" port="pk"><b>PK</b> id_fakultas INT</td></tr>
+    <tr><td align="left">kode_fakultas VARCHAR(10) UQ</td></tr>
+    <tr><td align="left">nama_fakultas VARCHAR(100)</td></tr></table>>];
+
+  program_studi [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="5" color="#1e3a8a">
+    <tr><td bgcolor="#1e3a8a"><font color="white"><b>program_studi</b></font></td></tr>
+    <tr><td align="left" port="pk"><b>PK</b> id_prodi INT</td></tr>
+    <tr><td align="left">kode_prodi VARCHAR(10) UQ</td></tr>
+    <tr><td align="left">nama_prodi VARCHAR(100)</td></tr>
+    <tr><td align="left">jenjang ENUM</td></tr>
+    <tr><td align="left" port="fk1"><i>FK</i> id_fakultas</td></tr></table>>];
+
+  users [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="5" color="#6d28d9">
+    <tr><td bgcolor="#6d28d9"><font color="white"><b>users</b></font></td></tr>
+    <tr><td align="left" port="pk"><b>PK</b> id_user INT</td></tr>
+    <tr><td align="left">username VARCHAR(30) UQ</td></tr>
+    <tr><td align="left">password_hash VARCHAR(255)</td></tr>
+    <tr><td align="left">role ENUM(admin,dosen,mahasiswa)</td></tr>
+    <tr><td align="left">is_aktif TINYINT(1)</td></tr>
+    <tr><td align="left">last_login DATETIME</td></tr></table>>];
+
+  dosen [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="5" color="#1e3a8a">
+    <tr><td bgcolor="#1e3a8a"><font color="white"><b>dosen</b></font></td></tr>
+    <tr><td align="left" port="pk"><b>PK</b> id_dosen INT</td></tr>
+    <tr><td align="left">nidn CHAR(10) UQ</td></tr>
+    <tr><td align="left">nama_dosen VARCHAR(100)</td></tr>
+    <tr><td align="left">email VARCHAR(100) UQ</td></tr>
+    <tr><td align="left">no_hp VARCHAR(20)</td></tr>
+    <tr><td align="left" port="fk1"><i>FK</i> id_prodi</td></tr>
+    <tr><td align="left" port="fk2"><i>FK</i> id_user UQ</td></tr></table>>];
+
+  mahasiswa [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="5" color="#1e3a8a">
+    <tr><td bgcolor="#1e3a8a"><font color="white"><b>mahasiswa</b></font></td></tr>
+    <tr><td align="left" port="pk"><b>PK</b> id_mahasiswa INT</td></tr>
+    <tr><td align="left">npm CHAR(13) UQ</td></tr>
+    <tr><td align="left">nama_mahasiswa VARCHAR(100)</td></tr>
+    <tr><td align="left">jenis_kelamin ENUM(L,P)</td></tr>
+    <tr><td align="left">tanggal_lahir DATE</td></tr>
+    <tr><td align="left">email VARCHAR(100) UQ</td></tr>
+    <tr><td align="left">angkatan YEAR</td></tr>
+    <tr><td align="left" port="fk1"><i>FK</i> id_prodi</td></tr>
+    <tr><td align="left" port="fk2"><i>FK</i> id_dosen_wali</td></tr>
+    <tr><td align="left" port="fk3"><i>FK</i> id_user UQ</td></tr></table>>];
+
+  mata_kuliah [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="5" color="#1e3a8a">
+    <tr><td bgcolor="#1e3a8a"><font color="white"><b>mata_kuliah</b></font></td></tr>
+    <tr><td align="left" port="pk"><b>PK</b> id_mk INT</td></tr>
+    <tr><td align="left">kode_mk VARCHAR(10) UQ</td></tr>
+    <tr><td align="left">nama_mk VARCHAR(100)</td></tr>
+    <tr><td align="left">sks TINYINT (1-6)</td></tr>
+    <tr><td align="left">semester_paket TINYINT (1-8)</td></tr>
+    <tr><td align="left">jenis ENUM(Wajib,Pilihan)</td></tr>
+    <tr><td align="left" port="fk1"><i>FK</i> id_prodi</td></tr></table>>];
+
+  tahun_akademik [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="5" color="#1e3a8a">
+    <tr><td bgcolor="#1e3a8a"><font color="white"><b>tahun_akademik</b></font></td></tr>
+    <tr><td align="left" port="pk"><b>PK</b> id_ta INT</td></tr>
+    <tr><td align="left">tahun CHAR(9)</td></tr>
+    <tr><td align="left">semester ENUM(Ganjil,Genap)</td></tr>
+    <tr><td align="left">is_aktif TINYINT(1)</td></tr></table>>];
+
+  ruangan [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="5" color="#1e3a8a">
+    <tr><td bgcolor="#1e3a8a"><font color="white"><b>ruangan</b></font></td></tr>
+    <tr><td align="left" port="pk"><b>PK</b> id_ruangan INT</td></tr>
+    <tr><td align="left">kode_ruangan VARCHAR(15) UQ</td></tr>
+    <tr><td align="left">nama_ruangan VARCHAR(100)</td></tr>
+    <tr><td align="left">gedung VARCHAR(100)</td></tr>
+    <tr><td align="left">kapasitas SMALLINT</td></tr></table>>];
+
+  kelas [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="5" color="#b45309">
+    <tr><td bgcolor="#b45309"><font color="white"><b>kelas</b></font></td></tr>
+    <tr><td align="left" port="pk"><b>PK</b> id_kelas INT</td></tr>
+    <tr><td align="left" port="fk1"><i>FK</i> id_mk</td></tr>
+    <tr><td align="left" port="fk2"><i>FK</i> id_ta</td></tr>
+    <tr><td align="left" port="fk3"><i>FK</i> id_dosen</td></tr>
+    <tr><td align="left" port="fk4"><i>FK</i> id_ruangan</td></tr>
+    <tr><td align="left">nama_kelas VARCHAR(5)</td></tr>
+    <tr><td align="left">hari ENUM</td></tr>
+    <tr><td align="left">jam_mulai, jam_selesai TIME</td></tr>
+    <tr><td align="left">kuota SMALLINT</td></tr></table>>];
+
+  krs [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="5" color="#b45309">
+    <tr><td bgcolor="#b45309"><font color="white"><b>krs</b></font></td></tr>
+    <tr><td align="left" port="pk"><b>PK</b> id_krs INT</td></tr>
+    <tr><td align="left" port="fk1"><i>FK</i> id_mahasiswa</td></tr>
+    <tr><td align="left" port="fk2"><i>FK</i> id_kelas</td></tr>
+    <tr><td align="left">status ENUM</td></tr>
+    <tr><td align="left">tanggal_pengajuan DATETIME</td></tr></table>>];
+
+  nilai [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="5" color="#15803d">
+    <tr><td bgcolor="#15803d"><font color="white"><b>nilai</b></font></td></tr>
+    <tr><td align="left" port="pk"><b>PK</b> id_nilai INT</td></tr>
+    <tr><td align="left" port="fk1"><i>FK</i> id_krs UQ</td></tr>
+    <tr><td align="left">nilai_tugas DECIMAL(5,2)</td></tr>
+    <tr><td align="left">nilai_uts DECIMAL(5,2)</td></tr>
+    <tr><td align="left">nilai_uas DECIMAL(5,2)</td></tr></table>>];
+
+  skala_nilai [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="5" color="#15803d">
+    <tr><td bgcolor="#15803d"><font color="white"><b>skala_nilai</b></font></td></tr>
+    <tr><td align="left"><b>PK</b> huruf VARCHAR(2)</td></tr>
+    <tr><td align="left">batas_bawah DECIMAL(5,2)</td></tr>
+    <tr><td align="left">batas_atas DECIMAL(5,2)</td></tr>
+    <tr><td align="left">bobot DECIMAL(3,2)</td></tr></table>>];
+
+  { rank=same; fakultas; users; }
+  { rank=same; program_studi; tahun_akademik; ruangan; }
+  { rank=same; dosen; mata_kuliah; }
+  { rank=same; mahasiswa; kelas; }
+  { rank=same; nilai; skala_nilai; }
+  // Notasi crow's foot: tee = tepat satu, odot/crow = nol atau banyak
+  fakultas:pk:e -> program_studi:fk1:w [arrowtail=tee, arrowhead=crow, xlabel="1 : N"];
+  program_studi:pk:e -> dosen:fk1:w [arrowtail=tee, arrowhead=crow];
+  program_studi:pk:e -> mahasiswa:fk1:w [arrowtail=tee, arrowhead=crow];
+  program_studi:pk:e -> mata_kuliah:fk1:w [arrowtail=tee, arrowhead=crow];
+  users:pk:e -> dosen:fk2:w [arrowtail=teeodot, arrowhead=teeodot, xlabel="1 : 1", color="#6d28d9"];
+  users:pk:e -> mahasiswa:fk3:w [arrowtail=teeodot, arrowhead=teeodot, color="#6d28d9"];
+  dosen:pk:e -> mahasiswa:fk2:w [arrowtail=teeodot, arrowhead=crowodot, xlabel="wali", style=dashed];
+  mata_kuliah:pk:e -> kelas:fk1:w [arrowtail=tee, arrowhead=crowodot];
+  tahun_akademik:pk:e -> kelas:fk2:w [arrowtail=tee, arrowhead=crowodot];
+  dosen:pk:e -> kelas:fk3:w [arrowtail=tee, arrowhead=crowodot, xlabel="mengampu"];
+  ruangan:pk:e -> kelas:fk4:w [arrowtail=teeodot, arrowhead=crowodot];
+  mahasiswa:pk:e -> krs:fk1:w [arrowtail=tee, arrowhead=crowodot];
+  kelas:pk:e -> krs:fk2:w [arrowtail=tee, arrowhead=crowodot];
+  krs:pk:e -> nilai:fk1:w [arrowtail=tee, arrowhead=teeodot, xlabel="1 : 0..1"];
+  nilai:s -> skala_nilai:n [style=dotted, arrowhead=vee, arrowtail=none, xlabel="konversi di v_nilai_akhir", color="#15803d"];
+}

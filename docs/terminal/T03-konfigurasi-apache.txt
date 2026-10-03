@@ -1,0 +1,25 @@
+$ cat /etc/apache2/conf-available/siakad.conf
+# SIAKAD - dapat diakses di http://localhost/siakad/
+ServerName localhost
+Alias /siakad /var/www/html/siakad
+<Directory /var/www/html/siakad>
+    Options FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+
+$ ls -l /var/www/html/ | grep siakad
+lrwxrwxrwx 1 root root    56 Oct  3 03:21 siakad -> /home/user/WEB-APLIKASI-SISTEM-INFORMASI-PERKULIAHAN-USK
+
+$ apache2ctl configtest
+Syntax OK
+
+$ apache2ctl -S | head -8
+VirtualHost configuration:
+*:80                   localhost (/etc/apache2/sites-enabled/000-default.conf:1)
+ServerRoot: "/etc/apache2"
+Main DocumentRoot: "/var/www/html"
+Main ErrorLog: "/var/log/apache2/error.log"
+Mutex default: dir="/var/run/apache2/" mechanism=default 
+Mutex mpm-accept: using_defaults
+Mutex watchdog-callback: using_defaults

@@ -1,0 +1,72 @@
+$ tree -L 3 --dirsfirst -I 'screenshots|html|terminal|diagram|node_modules' --noreport
+.
+├── app
+│   ├── controllers
+│   │   ├── AuthController.php
+│   │   ├── DashboardController.php
+│   │   ├── DosenController.php
+│   │   ├── DosenKelasController.php
+│   │   ├── FakultasController.php
+│   │   ├── KelasController.php
+│   │   ├── KhsController.php
+│   │   ├── KrsController.php
+│   │   ├── MahasiswaController.php
+│   │   ├── MataKuliahController.php
+│   │   ├── PenggunaController.php
+│   │   ├── PerwalianController.php
+│   │   ├── ProdiController.php
+│   │   ├── ProfilController.php
+│   │   ├── RuanganController.php
+│   │   ├── SistemController.php
+│   │   ├── TahunAkademikController.php
+│   │   └── TranskripController.php
+│   ├── core
+│   │   ├── Auth.php
+│   │   ├── Controller.php
+│   │   ├── Database.php
+│   │   ├── Model.php
+│   │   └── helpers.php
+│   ├── models
+│   │   ├── Dosen.php
+│   │   ├── Fakultas.php
+│   │   ├── Kelas.php
+│   │   ├── Krs.php
+│   │   ├── Mahasiswa.php
+│   │   ├── MataKuliah.php
+│   │   ├── Nilai.php
+│   │   ├── Prodi.php
+│   │   ├── Ruangan.php
+│   │   ├── Statistik.php
+│   │   ├── TahunAkademik.php
+│   │   └── User.php
+│   ├── views
+│   │   ├── admin
+│   │   ├── auth
+│   │   ├── dashboard
+│   │   ├── dosen
+│   │   ├── errors
+│   │   ├── layouts
+│   │   ├── mahasiswa
+│   │   └── profil
+│   └── routes.php
+├── assets
+│   ├── css
+│   │   └── style.css
+│   ├── img
+│   │   └── logo.svg
+│   └── js
+│       └── app.js
+├── config
+│   ├── config.local.example.php
+│   ├── config.local.php
+│   └── config.php
+├── database
+│   ├── schema.sql
+│   └── seed.sql
+├── docs
+├── tools
+│   ├── capture_terminal.py
+│   ├── generate_seed.php
+│   ├── screenshot.js
+│   └── screenshot_terminal.js
+└── index.php

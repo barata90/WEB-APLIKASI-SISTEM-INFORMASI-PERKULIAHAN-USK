@@ -1,0 +1,13 @@
+$ mariadb -t db_siakad -e "SELECT m.npm, m.nama_mahasiswa, p.nama_prodi, d.nama_dosen AS dosen_wali, i.ipk FROM mahasiswa m JOIN program_studi p ON p.id_prodi = m.id_prodi LEFT JOIN dosen d ON d.id_dosen = m.id_dosen_wali LEFT JOIN v_ipk i ON i.id_mahasiswa = m.id_mahasiswa WHERE m.angkatan = 2025 ORDER BY i.ipk DESC LIMIT 8"
++---------------+------------------+-------------+------------------------------------+------+
+| npm           | nama_mahasiswa   | nama_prodi  | dosen_wali                         | ipk  |
++---------------+------------------+-------------+------------------------------------+------+
+| 2508107010003 | Rizki Maulana    | Informatika | Nurul Fadhilah, S.Si., M.Sc.       | 3.94 |
+| 2508107010006 | Rafi Akmal       | Informatika | Dr. Rahmat Hidayat, S.Kom., M.Kom. | 3.94 |
+| 2508108010001 | Nadia Azzahra    | Statistika  | Dr. Cut Meurah Intan, M.Si.        | 3.91 |
+| 2508107010009 | Akbar Saputra    | Informatika | Nurul Fadhilah, S.Si., M.Sc.       | 3.83 |
+| 2508107010007 | Ilham Rahman     | Informatika | Nurul Fadhilah, S.Si., M.Sc.       | 3.78 |
+| 2508107010015 | Akbar Yusra      | Informatika | Nurul Fadhilah, S.Si., M.Sc.       | 3.71 |
+| 2508107010005 | Putri Saputra    | Informatika | Nurul Fadhilah, S.Si., M.Sc.       | 3.67 |
+| 2508107010014 | Muhammad Maulana | Informatika | Dr. Rahmat Hidayat, S.Kom., M.Kom. | 3.65 |
++---------------+------------------+-------------+------------------------------------+------+

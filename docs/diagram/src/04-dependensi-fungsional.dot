@@ -1,0 +1,27 @@
+digraph FD {
+  graph [rankdir=LR, fontname="Inter", fontsize=14, nodesep=0.3, ranksep=0.8, pad=0.3];
+  node  [fontname="Inter", fontsize=13, shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#475569"];
+  edge  [fontname="Inter", fontsize=12, penwidth=1.3];
+
+  key [label="{npm, kode_mk,\ntahun, semester}\n(kunci 1NF)", fillcolor="#fee2e2", color="#b91c1c"];
+  npm [label="npm", fillcolor="#eef2ff", color="#1e3a8a"];
+  kmk [label="kode_mk", fillcolor="#eef2ff", color="#1e3a8a"];
+  kls [label="{kode_mk, tahun,\nsemester, nama_kelas}", fillcolor="#eef2ff", color="#1e3a8a"];
+  prodi [label="kode_prodi"]; fak [label="kode_fakultas"]; nidn [label="nidn"]; na [label="nilai_akhir"]; huruf [label="huruf"];
+
+  key -> npm [label="parsial", color="#b91c1c", fontcolor="#b91c1c"];
+  key -> kmk [label="parsial", color="#b91c1c", fontcolor="#b91c1c"];
+  key -> kls [label="parsial", color="#b91c1c", fontcolor="#b91c1c"];
+  key -> "nilai_tugas, nilai_uts, nilai_uas" [label="penuh", color="#15803d", fontcolor="#15803d"];
+  npm -> "nama_mahasiswa, angkatan,\njenis_kelamin, tanggal_lahir";
+  npm -> prodi; npm -> "nidn_wali";
+  prodi -> "nama_prodi, jenjang" [color="#b45309", label="transitif", fontcolor="#b45309"];
+  prodi -> fak [color="#b45309"];
+  fak -> "nama_fakultas" [color="#b45309"];
+  kmk -> "nama_mk, sks,\nsemester_paket, jenis";
+  kls -> "hari, jam, ruang, kuota";
+  kls -> nidn;
+  nidn -> "nama_dosen, email, no_hp" [color="#b45309", label="transitif", fontcolor="#b45309"];
+  "nilai_tugas, nilai_uts, nilai_uas" -> na [label="turunan", style=dashed];
+  na -> huruf [color="#b45309"]; huruf -> "bobot" [color="#b45309"];
+}

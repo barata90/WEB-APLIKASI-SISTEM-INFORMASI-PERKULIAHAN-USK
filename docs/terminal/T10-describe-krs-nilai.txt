@@ -1,0 +1,20 @@
+$ mariadb -t db_siakad -e 'DESCRIBE krs; DESCRIBE nilai'
++-------------------+----------------------------------------+------+-----+---------------------+----------------+
+| Field             | Type                                   | Null | Key | Default             | Extra          |
++-------------------+----------------------------------------+------+-----+---------------------+----------------+
+| id_krs            | int(10) unsigned                       | NO   | PRI | NULL                | auto_increment |
+| id_mahasiswa      | int(10) unsigned                       | NO   | MUL | NULL                |                |
+| id_kelas          | int(10) unsigned                       | NO   | MUL | NULL                |                |
+| status            | enum('Diajukan','Disetujui','Ditolak') | NO   |     | Diajukan            |                |
+| tanggal_pengajuan | datetime                               | NO   |     | current_timestamp() |                |
++-------------------+----------------------------------------+------+-----+---------------------+----------------+
++-----------------+------------------+------+-----+---------------------+-------------------------------+
+| Field           | Type             | Null | Key | Default             | Extra                         |
++-----------------+------------------+------+-----+---------------------+-------------------------------+
+| id_nilai        | int(10) unsigned | NO   | PRI | NULL                | auto_increment                |
+| id_krs          | int(10) unsigned | NO   | UNI | NULL                |                               |
+| nilai_tugas     | decimal(5,2)     | YES  |     | NULL                |                               |
+| nilai_uts       | decimal(5,2)     | YES  |     | NULL                |                               |
+| nilai_uas       | decimal(5,2)     | YES  |     | NULL                |                               |
+| diperbarui_pada | datetime         | NO   |     | current_timestamp() | on update current_timestamp() |
++-----------------+------------------+------+-----+---------------------+-------------------------------+

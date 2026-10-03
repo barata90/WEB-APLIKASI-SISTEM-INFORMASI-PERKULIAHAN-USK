@@ -1,0 +1,22 @@
+$ grep -E '^(PRETTY_NAME|VERSION)=' /etc/os-release
+PRETTY_NAME="Ubuntu 24.04.4 LTS"
+VERSION="24.04.4 LTS (Noble Numbat)"
+
+$ uname -srm
+Linux 6.18.44-fc-v64 x86_64
+
+$ apache2 -v
+Server version: Apache/2.4.58 (Ubuntu)
+Server built:   2026-07-06T16:27:55
+
+$ php -v | head -1
+PHP 8.3.6 (cli) (built: Sep  2 2026 12:56:02) (NTS)
+
+$ mariadb --version
+mariadb  Ver 15.1 Distrib 10.11.14-MariaDB, for debian-linux-gnu (x86_64) using  EditLine wrapper
+
+$ apache2ctl -M 2>/dev/null | grep -E 'php|rewrite|alias|dir_module'
+ alias_module (shared)
+ dir_module (shared)
+ php_module (shared)
+ rewrite_module (shared)
