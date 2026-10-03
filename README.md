@@ -2,7 +2,16 @@
 
 Proyek UTS mata kuliah **Manajemen dan Pemodelan Data**. Aplikasi web sistem informasi perkuliahan dengan tiga peran (administrator, dosen, mahasiswa), dibangun dengan PHP 8 native (pola MVC, PDO) dan MySQL/MariaDB.
 
-Laporan UTS lengkap (nomor 1 sampai 6, dengan screenshot dan diagram): [`docs/LAPORAN_UTS.md`](docs/LAPORAN_UTS.md), juga tersedia sebagai [`PDF`](docs/LAPORAN_UTS.pdf) dan [`DOCX`](docs/LAPORAN_UTS.docx).
+## Tautan
+
+| | |
+|---|---|
+| Repositori kode | <https://github.com/barata90/WEB-APLIKASI-SISTEM-INFORMASI-PERKULIAHAN-USK> |
+| Aplikasi (setelah dipasang di komputer sendiri) | <http://localhost/siakad/> |
+| Laporan UTS | [Markdown](docs/LAPORAN_UTS.md) · [PDF](docs/LAPORAN_UTS.pdf) · [DOCX](docs/LAPORAN_UTS.docx) |
+| Galeri tangkapan layar | [docs/screenshots](docs/screenshots) |
+
+Aplikasi ini ditulis dengan PHP dan MySQL/MariaDB sehingga harus dijalankan oleh web server yang mendukung PHP. Alamat `http://localhost/siakad/` hanya terbuka di komputer yang sudah menjalankan Apache dan MySQL dengan aplikasi ini, karena `localhost` selalu merujuk ke komputer yang sedang dipakai. Cara memasangnya ada di bagian [Menjalankan secara lokal](#menjalankan-secara-lokal). GitHub hanya menyimpan kode, dan GitHub Pages tidak dapat menjalankan PHP.
 
 ![Dashboard administrator](docs/screenshots/03-admin-dashboard.png)
 
