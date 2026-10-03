@@ -1,0 +1,28 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspaces/siakad:cached
+    environment:
+      DB_HOST: db
+      DB_NAME: db_siakad
+      DB_USER: siakad
+      DB_PASS: siakad123
+      APP_DEBUG: "true"
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.11
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: root123
+      MARIADB_DATABASE: db_siakad
+      MARIADB_USER: siakad
+      MARIADB_PASSWORD: siakad123
+    volumes:
+      # Dijalankan otomatis sekali saat basis data pertama kali dibuat
+      - ../database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ../database/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro

@@ -1,0 +1,22 @@
+{
+  "name": "SIAKAD (PHP 8.3 + Apache + MariaDB 10.11)",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/siakad",
+  "overrideCommand": false,
+  "forwardPorts": [80],
+  "portsAttributes": {
+    "80": {
+      "label": "SIAKAD",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["README.md"]
+    },
+    "vscode": {
+      "extensions": ["bmewburn.vscode-intelephense-client"]
+    }
+  }
+}
