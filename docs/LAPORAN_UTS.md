@@ -585,6 +585,8 @@ cp config/config.local.example.php config/config.local.php   # isi user & passwo
 #    http://localhost/siakad/
 ```
 
+Alamat `localhost` selalu merujuk ke komputer yang sedang dipakai, sehingga `http://localhost/siakad/` hanya dapat dibuka pada komputer yang menjalankan Apache dan MariaDB dengan aplikasi ini. Untuk membukanya di laptop lain, aplikasi perlu dipasang terlebih dahulu di laptop tersebut.
+
 Langkah yang setara di XAMPP: jalankan **Apache** dan **MySQL** dari XAMPP Control Panel, buka `http://localhost/phpmyadmin`, impor `database/schema.sql` lalu `database/seed.sql`, salin folder proyek ke `htdocs/siakad`, kemudian buka `http://localhost/siakad/`. Konfigurasi bawaan (`root` tanpa password) sudah cocok dengan XAMPP sehingga `config.local.php` tidak wajib dibuat.
 
 Akun demo:
