@@ -5,7 +5,7 @@ lewat phpMyAdmin di server bersama (misalnya dba.dotdigital.id).
 
 Perbedaan dengan schema.sql/seed.sql:
 - tanpa CREATE DATABASE dan USE: basis data dipilih di phpMyAdmin;
-- tanpa DROP TABLE, DROP VIEW, dan TRUNCATE: tabel lain di akun yang sama tidak
+- tanpa DROP TABLE, DROP VIEW, TRUNCATE, dan DELETE: tabel lain di akun yang sama tidak
   akan terhapus. Jika nama tabel sudah ada, impor berhenti dengan galat
   "Table already exists" dan tidak ada data yang hilang.
 
@@ -21,7 +21,7 @@ seed = (root / 'database' / 'seed.sql').read_text(encoding='utf-8')
 def clean(sql: str) -> str:
     sql = re.sub(r'CREATE DATABASE IF NOT EXISTS[^;]*;\s*', '', sql)
     sql = re.sub(r'^\s*USE\s+\w+;\s*$', '', sql, flags=re.M)
-    sql = re.sub(r'^\s*(DROP\s+(TABLE|VIEW)\s+IF\s+EXISTS|TRUNCATE\s+TABLE)[^;]*;\s*$', '', sql, flags=re.M)
+    sql = re.sub(r'^\s*(DROP\s+(TABLE|VIEW)\s+IF\s+EXISTS|TRUNCATE\s+TABLE|DELETE\s+FROM)[^;]*;\s*$', '', sql, flags=re.M)
     sql = re.sub(r'^\s*SET FOREIGN_KEY_CHECKS = [01];\s*$', '', sql, flags=re.M)
     return re.sub(r'\n{3,}', '\n\n', sql).strip() + '\n'
 

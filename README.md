@@ -13,7 +13,7 @@ Proyek UTS mata kuliah **Manajemen dan Pemodelan Data**. Aplikasi web sistem inf
 | Aplikasi online (GitHub Codespaces) | <https://codespaces.new/barata90/WEB-APLIKASI-SISTEM-INFORMASI-PERKULIAHAN-USK?quickstart=1> |
 | Halaman proyek (GitHub Pages) | <https://barata90.github.io/WEB-APLIKASI-SISTEM-INFORMASI-PERKULIAHAN-USK/> |
 | Repositori kode | <https://github.com/barata90/WEB-APLIKASI-SISTEM-INFORMASI-PERKULIAHAN-USK> |
-| Aplikasi di komputer sendiri | <http://localhost:8000> (MacBook, `php -S`) atau <http://localhost/siakad/> (XAMPP) |
+| Aplikasi di komputer sendiri | <http://localhost/siakad/> (XAMPP di Windows/macOS) atau <http://localhost:8000> (`php -S`) |
 | Laporan UTS | [Markdown](docs/LAPORAN_UTS.md) · [PDF](docs/LAPORAN_UTS.pdf) · [DOCX](docs/LAPORAN_UTS.docx) |
 | Galeri tangkapan layar | [docs/screenshots](docs/screenshots) |
 
@@ -50,7 +50,16 @@ Keamanan: password bcrypt, prepared statement, token CSRF, escaping output, `ses
 
 Konfigurasi bawaan memakai user `root` tanpa password. Jika berbeda, salin `config/config.local.example.php` menjadi `config/config.local.php` lalu sesuaikan.
 
-**MacBook (Homebrew, tanpa Apache)**
+**MacBook dengan XAMPP (disarankan, termasuk macOS 12 Monterey)**
+
+1. Pasang [XAMPP for OS X](https://www.apachefriends.org), buka `/Applications/XAMPP/manager-osx`, lalu di tab *Manage Servers* jalankan **MySQL Database** dan **Apache Web Server** satu per satu (ProFTPD tidak diperlukan).
+2. Unduh repositori ini (**Code → Download ZIP**), ekstrak, lalu salin foldernya ke `/Applications/XAMPP/xamppfiles/htdocs/` dan **ganti namanya menjadi `siakad`**. Hasil akhirnya: `/Applications/XAMPP/xamppfiles/htdocs/siakad/index.php`.
+3. Buka <http://localhost/phpmyadmin>, tab **Import**: impor `database/schema.sql` terlebih dahulu, lalu `database/seed.sql`.
+4. Buka <http://localhost/siakad/> dan login dengan `admin` / `admin123`.
+
+Konfigurasi bawaan (user `root` tanpa password) sudah cocok dengan XAMPP. Jika folder tidak diganti namanya, alamatnya mengikuti nama folder, misalnya `http://localhost/WEB-APLIKASI-SISTEM-INFORMASI-PERKULIAHAN-USK-main/`. Jika phpMyAdmin menampilkan galat `mysqli::real_connect(): (HY000/2002)`, artinya MySQL belum menyala; jalankan `sudo /Applications/XAMPP/xamppfiles/bin/mysql.server start` di Terminal untuk melihat pesan galatnya.
+
+**MacBook dengan Homebrew (macOS yang masih didukung Homebrew)**
 
 ```bash
 # 1. Pasang PHP dan MariaDB (sekali saja). Homebrew: https://brew.sh
@@ -74,7 +83,7 @@ PHP
 php -S localhost:8000 tools/router.php
 ```
 
-`tools/router.php` meniru aturan `.htaccess`, sehingga folder `config/`, `database/`, dan `app/` tetap tidak dapat diakses lewat browser. Alternatif tanpa terminal adalah [MAMP](https://www.mamp.info/): salin folder proyek ke `/Applications/MAMP/htdocs/siakad`, impor SQL lewat phpMyAdmin MAMP, isi `config.local.php` dengan `db_port` 8889 serta user dan password `root`, lalu buka `http://localhost:8888/siakad/`.
+`tools/router.php` meniru aturan `.htaccess`, sehingga folder `config/`, `database/`, dan `app/` tetap tidak dapat diakses lewat browser. Homebrew tidak lagi menyediakan paket siap pakai untuk macOS 12 sehingga instalasi di versi tersebut mencoba mengompilasi puluhan paket dan sering gagal; gunakan XAMPP di atas. Alternatif tanpa terminal adalah [MAMP](https://www.mamp.info/): salin folder proyek ke `/Applications/MAMP/htdocs/siakad`, impor SQL lewat phpMyAdmin MAMP, isi `config.local.php` dengan `db_port` 8889 serta user dan password `root`, lalu buka `http://localhost:8888/siakad/`.
 
 **phpMyAdmin di server bersama (dba.dotdigital.id)**
 
